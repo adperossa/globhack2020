@@ -1,6 +1,6 @@
 const Company = require('../models/Company');
 
-async function getCompanyList(req, res) {
+async function getCompanyFilteredList(req, res) {
   let companyName  = req.query.companyName;
   if (!companyName) {
     return res.status(200).json({ success: false, status: 400, message: "Company name not received" })
