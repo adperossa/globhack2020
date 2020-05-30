@@ -1,10 +1,8 @@
 function login(req, res) {
   let response;
   if (!req.body.username || !req.body.password) {
-    response = { success: false, message: "User info is not complete" }
-    return res.json(response);
+    return res.json({ success: false, message: "User info is not complete" });
   }
-
   res.json(response)
 }
 
