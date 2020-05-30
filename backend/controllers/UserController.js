@@ -1,23 +1,22 @@
-function login(req, res){
+function login(req, res) {
+  let response;
+  if (!req.body.username || !req.body.password) {
+    return res.json({ success: false, message: "User info is not complete" });
+  }
+  res.json(response)
+}
+
+function register(req, res) {
 
 }
 
-function register(req, res){
+function changePassword() {
 
 }
 
-function changePassword(){
-
-}
-
-function editUser(req, res){
+function editUser(req, res) {
 
 }
 
 
-module.exports = {
-    login: login,
-    register: register,
-    changePassword: changePassword,
-    editUser: editUser
-}
+module.exports = { login, register, changePassword, editUser };
