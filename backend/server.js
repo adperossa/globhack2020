@@ -26,7 +26,7 @@ const ReviewController = require("./controllers/ReviewController");
 //Routes
 app.post("/login", UserController.login);
 app.post("/register", UserController.register);
-app.post("/review-form", ReviewController.addReview);
+app.post("/review-form", ReviewController.);
 
 //Api Routes
 app.get('/api/users', UserController.getUserList);
