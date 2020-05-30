@@ -12,8 +12,23 @@ async function login(req, res) {
   return res.json({ success: true, message: "Login successfully" });
 }
 
-function register(req, res) {
+async function register(req, res) {
+  const { username, password, confirmPassword } = req.body;
 
+  if (!username || !password || !confirmPassword )
+    return res.json({ success: false, message: "User info is not complete" });
+
+  if (password !== confirmPassword ) 
+    return res.json({ success: false, message: "Incorrect confirm password" });
+
+  const userExist = await User.find({ username: username })
+
+  if(userExist.length > 0) 
+    return res.json({ success: false, message: "User already exist" });
+  
+  const NewUser = new User({username, password});
+  await NewUser.save();
+  return res.json({ success: true, message: "User created correctly" });
 }
 
 function changePassword() {
