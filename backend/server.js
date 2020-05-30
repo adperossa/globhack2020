@@ -20,13 +20,24 @@ app.use(cors());
 
 //Controllers
 const UserController = require("./controllers/UserController");
+const ReviewController = require("./controllers/ReviewController");
+const CompanyController = require("./controllers/CompanyController");
+
 
 //Routes
 app.post("/login", UserController.login);
 app.post("/register", UserController.register);
+app.post("/review", ReviewController.addReview);
+app.get("/companies", CompanyController.getCompanyFilteredList);
+
+
 
 //Api Routes
 app.get('/api/users', UserController.getUserList);
+app.get('/api/reviews', ReviewController.getReviewList); 
+app.get("/api/companies", CompanyController.getCompanyList);
+
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
