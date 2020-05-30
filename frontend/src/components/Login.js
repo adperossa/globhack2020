@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 export default (props) => {
 
@@ -8,6 +9,8 @@ export default (props) => {
   const [password, setPassword] = useState('')
   const [loginStatus, setLoginStatus] = useState('');
   const [loginMsg, setLoginMsg] = useState('');
+
+  const history = useHistory();
 
 
   const handleLogin = (ev) => {
@@ -27,8 +30,11 @@ export default (props) => {
 
           setLoginStatus("success");
           setLoginMsg(`Bienvenido, ${username}!`);
+          props.setAuthState(true);
+
           setTimeout(() => {
             props.onHideLogin();
+            history.push("/home");
           }, 2000);
 
         } else {

@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 // Components and styles
@@ -17,17 +18,49 @@ import Landing from './Landing';
 
 
 export default function App() {
+
+  // Flag global de sesión
+  const [logged, setLogged] = useState(false);
+
   return (
 
     <Router>
 
-      <Navigation />
+      <Navigation setAuthState={setLogged} isLogged={logged} />
 
       <Switch>
-        <Route path="/submit" children={<FormReview />} />
-        <Route path="/search" children={<Search />} />
-        <Route path="/home" children={<UserHome />} />
-        <Route path="/" children={<Landing />} />
+
+        <Route path="/submit">
+          { logged ? (
+            <FormReview />
+            ) : (
+              <Redirect to="/" />
+            )
+          }
+        </Route>
+
+        <Route path="/search">
+          { logged ? (
+              <Search />
+            ) : (
+              <Redirect to="/" />
+            )
+          }
+        </Route>
+
+        <Route path="/home">
+          { logged ? (
+              <UserHome />
+            ) : (
+              <Redirect to="/" />
+            )
+          }
+        </Route>
+
+        <Route exact path="/">
+          <Landing />
+        </Route>
+
       </Switch>
 
 
