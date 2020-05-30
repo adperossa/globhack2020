@@ -26,10 +26,11 @@ const ReviewController = require("./controllers/ReviewController");
 //Routes
 app.post("/login", UserController.login);
 app.post("/register", UserController.register);
-app.post("/review-form", ReviewController.);
+app.post("/review-form", ReviewController.addReview);
 
 //Api Routes
 app.get('/api/users', UserController.getUserList);
+app.get('/api/reviews', ReviewController.getReviewList); 
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)

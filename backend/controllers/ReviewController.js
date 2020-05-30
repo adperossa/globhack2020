@@ -13,7 +13,7 @@ async function addReview(req, res) {
     //Add company to DB
     const newCompany = new Company({ name: companyName })
     await newCompany.save();
-    
+
   }
   //Add average
   const average = calculateAverage(Q1, Q2, Q3, Q4, Q5)
@@ -35,6 +35,12 @@ function calculateAverage(num1, num2, num3, num4, num5) {
   return average;
 }
 
+async function getReviewList(req, res) {
+  const Reviews = await Review.find();
+  return res.status(200).json(Reviews);
+}
+
 module.exports = {
-  addReview
+  addReview,
+  getReviewList
 }
