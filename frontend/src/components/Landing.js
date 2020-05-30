@@ -5,7 +5,7 @@ import Title from './Title'
 export default () => {
   return (
     <Container>
-    <Title />
-  </Container>
+      <Title />
+    </Container>
   )
 }

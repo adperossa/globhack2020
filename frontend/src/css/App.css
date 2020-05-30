@@ -37,3 +37,10 @@
     -moz-box-shadow: 0 4px 8px 0 #777, 0 10px 6px -6px #777;
     box-shadow: 0 4px 8px 0 #777, 0 10px 6px -6px #777;
 }
+
+.home-banner {
+    background-color: #316E9E !important;
+    text-align: center;
+    color: white;
+    margin-top: 250px;
+}
