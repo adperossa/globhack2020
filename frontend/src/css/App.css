@@ -11,8 +11,29 @@
     border-color: #1EA896 !important;
 }
 
+.button-green:hover {
+    background-color: #247369 !important;
+    border-color: #247369 !important;
+}
+
+.button-orange{
+    background-color: #FF715B !important;
+    border-color: #FF715B !important;
+}
+
+.button-orange:hover {
+    background-color: #c55948 !important;
+    border-color: #c55948 !important;
+}
+
 .border-blue{
     border: none !important;
     border-radius: inherit !important;
     border-bottom: 1.5px solid #215075 !important;
+}
+
+.sombra{
+    -webkit-box-shadow: 0 4px 8px 0 #777, 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 4px 8px 0 #777, 0 10px 6px -6px #777;
+    box-shadow: 0 4px 8px 0 #777, 0 10px 6px -6px #777;
 }

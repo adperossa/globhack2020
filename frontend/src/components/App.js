@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap';
 import '../css/App.css';
 import Title from './Title';
 import Navigation from './Navigation';
+import FormReview from './FormReview';
 
 
 
@@ -19,6 +20,8 @@ export default function App() {
         <Container>
           <Title />
         </Container>
+
+        <FormReview />
 
     </>
   );
