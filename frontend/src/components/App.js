@@ -1,9 +1,12 @@
 import React from 'react';
 import '../css/App.css';
+import Navigation from './Navigation';
 
 function App() {
   return (
-    <h1>Recruiter Review</h1>
+    <>
+    <Navigation />
+    </>
   );
 }
 
