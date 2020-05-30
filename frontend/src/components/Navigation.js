@@ -23,7 +23,7 @@ export default () =>{
     const handleHideRegisterModal = () =>{
         setShowRegisterModal(false)
     }
-
+    
     return(
         <>
             <Navbar variant="dark" className="colour-nav">
@@ -46,7 +46,7 @@ export default () =>{
                     >
                         Registrarse
                     </Button>
-
+                
                 </Nav>
 
             </Navbar>
@@ -56,7 +56,7 @@ export default () =>{
             />
 
             <Register showRegister={showRegisterModal}
-                      onHideRegister={handleHideRegisterModal}
+                      onHideRegister={handleHideRegisterModal}            
             />
         </>
     )

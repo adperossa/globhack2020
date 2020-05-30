@@ -4,14 +4,14 @@ import {Form, Button} from 'react-bootstrap';
 
 export default (props) =>{
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [ userName, setUsername ] = useState('')
+    const [ password, setPassword ] = useState('')
 
     return(
         <>
-            <Modal show={props.showLogin}
-                   onHide={props.onHideLogin}
-                   title='Iniciar sesión'
+            <Modal show={props.showRegister}
+                   onHide={props.onHideRegister}
+                   title='Registrate'
                    body={
                             <>
                                 <Form>
@@ -21,7 +21,7 @@ export default (props) =>{
                                         
                                         <Form.Control type="email"
                                                       placeholder="email@gmail.com"
-                                                      onChange={(e) => { setUsername(e.target.value) }}
+                                                      onChange={e => setUsername(e.target.value)}
                                         />
 
                                     </Form.Group>
@@ -32,7 +32,7 @@ export default (props) =>{
                                         
                                         <Form.Control type="password"
                                                       placeholder="Contraseña"
-                                                      onChange={(e) => { setPassword(e.target.value) }}
+                                                      onChange={e => setPassword(e.target.value)}
                                         />
 
                                     </Form.Group>
@@ -41,7 +41,7 @@ export default (props) =>{
                         }
                    footer={
                             <Button>
-                                Iniciar sesión
+                                Registrarse
                             </Button>
                           }
             />
