@@ -2,7 +2,7 @@ const Review = require('../models/Review');
 const Company = require('../models/Company');
 
 async function addReview(req, res) {
-  const { companyName, summary, Q1, Q2, Q3, Q4, Q5 } = req.body;
+  const { companyName, summary, questionOne, questionTwo, questionThree } = req.body;
   //Bad request
   if (!companyName) {
     return res.status(401).send("Company name missing");
@@ -16,17 +16,17 @@ async function addReview(req, res) {
 
   }
   //Add average
-  const average = calculateAverage(Q1, Q2, Q3, Q4, Q5)
+  const average = calculateAverage(questionOne, questionTwo, questionThree )
 
   //200 OK
-  const NewReview = new Review({ companyName, summary, Q1, Q2, Q3, Q4, Q5, average })
+  const NewReview = new Review({ companyName, summary, questionOne, questionTwo, questionThree, average })
   await NewReview.save();
 
   return res.status(200).json({success: true, status: 200, message: "Review saved"});
 }
 
-function calculateAverage(num1, num2, num3, num4, num5) {
-  let arr = [num1, num2, num3, num4, num5];
+function calculateAverage(num1, num2, num3) {
+  let arr = [num1, num2, num3];
   
   let acum = arr.reduce((a,b) => Number(a)+ Number(b))
   const average = acum / arr.length;
