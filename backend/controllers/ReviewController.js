@@ -22,7 +22,7 @@ async function addReview(req, res) {
   const NewReview = new Review({ companyName, summary, Q1, Q2, Q3, Q4, Q5, average })
   await NewReview.save();
 
-  return res.status(200).send("Review added");
+  return res.status(200).json({success: true, status: 200, message: "Review saved"});
 }
 
 function calculateAverage(num1, num2, num3, num4, num5) {
