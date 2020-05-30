@@ -31,6 +31,7 @@ export default (props) => {
           setLoginStatus("success");
           setLoginMsg(`Bienvenido, ${username}!`);
           props.setAuthState(true);
+          props.setCurrentUser(username);
 
           setTimeout(() => {
             props.onHideLogin();

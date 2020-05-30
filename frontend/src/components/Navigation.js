@@ -9,8 +9,15 @@ import logo from '../img/logo.png';
 
 export default (props) => {
 
-  const [showLoginModal, setShowLoginModal] = useState(false)
-  const [showRegisterModal, setShowRegisterModal] = useState(false)
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const handleLogout = () => {
+    props.setAuthState(false);
+    setCurrentUser(null);
+  }
+
 
   const handleShowLoginModal = () => {
     setShowLoginModal(true)
@@ -40,7 +47,7 @@ export default (props) => {
 
           {
             props.isLogged ? (
-              <AuthNavBtns setAuthState={props.setAuthState}/>
+              <AuthNavBtns currentUser={currentUser} logout={handleLogout}/>
             ) : (
               <NavBtns handleShowLoginModal={handleShowLoginModal}
                       handleShowRegisterModal={handleShowRegisterModal}
@@ -57,6 +64,7 @@ export default (props) => {
       <Login showLogin={showLoginModal}
         onHideLogin={handleHideLoginModal}
         setAuthState={props.setAuthState}
+        setCurrentUser={setCurrentUser}
       />
 
       <Register showRegister={showRegisterModal}
