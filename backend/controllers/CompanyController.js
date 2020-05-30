@@ -1,6 +1,6 @@
 const Company = require('../models/Company');
 
-async function getCompanyList(req, res) {
+async function getCompanyFilteredList(req, res) {
   let { companyName } = req.query.companyName;
   if (!companyName) {
     return res.status(200).json({ success: false, status: 400, message: "Company name not received" })
@@ -15,4 +15,9 @@ async function getCompanyList(req, res) {
   return res.status(200).json({ success: true, status: 200, message: "Request succesfully", companies: companyList });
 }
 
-module.exports = { getCompanyList };
+async function getCompanyList(req, res) {
+  const companies = await Company.find();
+  res.json(companies);
+}
+
+module.exports = { getCompanyFilteredList, getCompanyList };
