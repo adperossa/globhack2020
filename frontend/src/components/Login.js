@@ -18,11 +18,12 @@ export default (props) => {
     fetch(`http://localhost:8080/login`, {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',
-      body: JSON.stringify({ username, password, confirmPassword: password })
+      body: JSON.stringify({ username, password })
     })
-      .then(res => {
+      .then(res => res.json())
+      .then(data => {
 
-        if (res.ok) {
+        if (data.success) {
 
           setLoginStatus("success");
           setLoginMsg(`Bienvenido, ${username}!`);
@@ -33,11 +34,11 @@ export default (props) => {
         } else {
 
           setLoginStatus("danger");
-          if (res.status === 401) {
+          if (data.status === 401) {
             setLoginMsg("Usuario y/o contraseña incorrecta.")
           } else {
             setLoginMsg("Ocurrió un error.");
-            console.error(`Error ${res.status}: ${res.statusText}`);
+            console.error(`Error ${data.status}: ${data.message}`);
           }
 
         }
@@ -52,7 +53,7 @@ export default (props) => {
         title='Iniciar sesión'
         body={
           <>
-            <Form id="loginForm" onSubmit="handleLogin">
+            <Form id="loginForm" onSubmit={handleLogin}>
               <Form.Group>
 
                 <Form.Label>Ingrese su email</Form.Label>
