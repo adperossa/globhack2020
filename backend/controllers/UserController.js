@@ -1,11 +1,15 @@
 const User = require('../models/User');
 
-function login(req, res) {
-  let response;
+async function login(req, res) {
+  let { username, password } = req.body;
   if (!req.body.username || !req.body.password) {
     return res.json({ success: false, message: "User info is not complete" });
   }
-  res.json(response)
+  const users = await User.find({ username: username, password: password });
+  if(users.length === 0){
+    return res.json({ success: false, message: "You are not registered" });
+  }
+  return res.json({ success: true, message: "Login successfully" });
 }
 
 function register(req, res) {
