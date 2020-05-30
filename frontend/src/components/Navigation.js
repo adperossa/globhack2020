@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {Navbar, Button, Nav} from 'react-bootstrap';
 import Login from './Login';
+import Register from './Register';
 
 export default () =>{
 
     const [ showLoginModal, setShowLoginModal ] = useState(false)
+    const [ showRegisterModal, setShowRegisterModal ] = useState(false)
 
     const handleShowLoginModal = () =>{
         setShowLoginModal(true)
@@ -12,6 +14,14 @@ export default () =>{
 
     const handleHideLoginModal = () =>{
         setShowLoginModal(false)
+    }
+
+    const handleShowRegisterModal = () =>{
+        setShowRegisterModal(true)
+    }
+
+    const handleHideRegisterModal = () =>{
+        setShowRegisterModal(false)
     }
     
     return(
@@ -31,7 +41,11 @@ export default () =>{
                         Iniciar sesión
                     </Button>
 
-                    <Button variant="outline-light">Registrarse</Button>
+                    <Button variant="outline-light"
+                            onClick={handleShowRegisterModal}
+                    >
+                        Registrarse
+                    </Button>
                 
                 </Nav>
 
@@ -39,6 +53,10 @@ export default () =>{
 
             <Login showLogin={showLoginModal} 
                    onHideLogin={handleHideLoginModal}
+            />
+
+            <Register showRegister={showRegisterModal}
+                      onHideRegister={handleHideRegisterModal}            
             />
         </>
     )
