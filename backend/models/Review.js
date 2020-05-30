@@ -8,12 +8,6 @@ const ReviewSchema = new Schema({
   Q3: { type: Number, required:true },
   Q4: { type: Number, required:true },
   Q5: { type: Number, required:true },
-  Q6: { type: Number, required:true },
-  Q7: { type: Number, required:true },
-  Q8: { type: Number, required:true },
-  Q9: { type: Number, required:true },
-  Q10: { type: Number, required:true },
-  Q11: { type: Number, required:true },
   average: { type: Number, required:true }
 })
 

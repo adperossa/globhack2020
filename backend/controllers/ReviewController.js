@@ -28,9 +28,11 @@ async function addReview(req, res) {
 function calculateAverage(num1, num2, num3, num4, num5) {
   let arr = [num1, num2, num3, num4, num5];
   let acum = 0;
+  
   arr.forEach(element => {
-    acum += element;
+    acum += Number(element);
   });
+
   const average = acum / arr.length;
   return average;
 }
