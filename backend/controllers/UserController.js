@@ -31,10 +31,10 @@ async function register(req, res) {
   const NewUser = new User({username, password});
   await NewUser.save();
   
-  return res.json({ success: true, message: "User created correctly" });
+  return res.json({ success: true, message: "User created correctly", status: 200 });
 }
 
-function changePassword() {
+function changePassword(req, res) {
 
 }
 
