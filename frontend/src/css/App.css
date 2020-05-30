@@ -1,3 +1,18 @@
 .colour-nav{
     background-color: #4C5454;
 }
+
+.colour-text{
+    color: #4C5454;
+}
+
+.button-green{
+    background-color: #1EA896 !important;
+    border-color: #1EA896 !important;
+}
+
+.border-blue{
+    border: none !important;
+    border-radius: inherit !important;
+    border-bottom: 1.5px solid #215075 !important;
+}

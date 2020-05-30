@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Navbar, Button, Nav} from 'react-bootstrap';
 import Login from './Login';
 import Register from './Register';
+import logo from '../img/logo.png';
 
 export default () =>{
 
@@ -27,8 +28,9 @@ export default () =>{
     return(
         <>
             <Navbar variant="dark" className="colour-nav">
+                
                 <Navbar.Brand>
-                   <h5>Recruiter Review</h5> 
+                   <img src={logo} alt="logo" style={{ width: '7rem' }} />
                 </Navbar.Brand>
 
 

@@ -6,6 +6,7 @@ export default (props) =>{
         <>
             <Modal show={props.show}
                    onHide={props.onHide}
+                   className="colour-text"
             >
 
                 <Modal.Header closeButton>

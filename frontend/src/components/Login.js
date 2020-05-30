@@ -59,8 +59,9 @@ export default (props) => {
                 <Form.Label>Ingrese su email</Form.Label>
 
                 <Form.Control type="email"
-                  placeholder="email@gmail.com"
-                  onChange={(e) => { setUsername(e.target.value) }}
+                              className="border-blue"
+                              placeholder="email@gmail.com"
+                              onChange={(e) => { setUsername(e.target.value) }}
                 />
 
               </Form.Group>
@@ -70,8 +71,9 @@ export default (props) => {
                 <Form.Label>Ingrese su contraseña</Form.Label>
 
                 <Form.Control type="password"
-                  placeholder="Contraseña"
-                  onChange={(e) => { setPassword(e.target.value) }}
+                              className="border-blue"
+                              placeholder="Contraseña"
+                              onChange={(e) => { setPassword(e.target.value) }}
                 />
 
               </Form.Group>
@@ -84,7 +86,10 @@ export default (props) => {
           </>
         }
         footer={
-          <Button type="submit" form="loginForm">
+          <Button type="submit" 
+                  form="loginForm"
+                  className="button-green"
+          >
             Iniciar sesión
           </Button>
         }
