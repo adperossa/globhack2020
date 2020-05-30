@@ -20,10 +20,13 @@ app.use(cors());
 
 //Controllers
 const UserController = require("./controllers/UserController");
+const ReviewController = require("./controllers/ReviewController");
+
 
 //Routes
 app.post("/login", UserController.login);
 app.post("/register", UserController.register);
+app.post("/review-form", ReviewController.addReview);
 
 //Api Routes
 app.get('/api/users', UserController.getUserList);
