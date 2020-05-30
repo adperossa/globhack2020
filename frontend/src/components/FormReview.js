@@ -10,11 +10,25 @@ export default () =>{
     const [ questionThree, setQuestionThree ] = useState(6)
 
     let object = {
-        company_name: companyName,
+        companyName: companyName,
         summary: summary,
-        Q1: questionOne,
-        Q2: questionTwo,
-        Q3: questionThree
+        questionOne: questionOne,
+        questionTwo: questionTwo,
+        questionThree: questionThree
+    }
+
+    const handleSubmit = () =>{
+
+        fetch(`http://localhost:8080/review`, {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(object)
+        })
+         .then( res => res.json() )
+         .then( 
+             res =>  
+            {alert(res.message)} )
+        
     }
 
     return(
@@ -210,10 +224,13 @@ export default () =>{
                 </Card.Body>
 
                 <Card.Footer className="text-right">
+
                     <Button className="button-orange"
+                            onClick={handleSubmit}
                     >
                         Enviar evaluación
                     </Button>
+
                 </Card.Footer>
             
             </Card>
