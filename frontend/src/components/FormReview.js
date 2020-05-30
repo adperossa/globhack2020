@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, Button, Card, Dropdown} from 'react-bootstrap';
 
 export default () =>{
+
+    const [ companyName, setCompanyName ] = useState('')
+    const [ summary, setSummary ] = useState('')
+    const [ questionOne, setQuestionOne ] = useState(6)
+    const [ questionTwo, setQuestionTwo ] = useState(6)
+    const [ questionThree, setQuestionThree ] = useState(6)
+
+    let object = {
+        company_name: companyName,
+        summary: summary,
+        Q1: questionOne,
+        Q2: questionTwo,
+        Q3: questionThree
+    }
 
     return(
         <>
@@ -20,7 +34,9 @@ export default () =>{
                             <Form.Label>Nombre de la empresa a la cual queres hacerle la review</Form.Label>
                             <Form.Control type="text" 
                                         className="border-blue"
-                                        placeholder="Nombre de la empresa" 
+                                        placeholder="Nombre de la empresa"
+                                        value={companyName}
+                                        onChange={ e => setCompanyName(e.target.value) }
                             />
 
                         </Form.Group>
@@ -30,6 +46,8 @@ export default () =>{
                             <Form.Control as="textarea" 
                                         rows="2" 
                                         placeholder="Contranos las ventajas y las desventajas"
+                                        value={summary}
+                                        onChange= { e => setSummary(e.target.value) }
                             />
                         </Form.Group>
 
@@ -46,30 +64,40 @@ export default () =>{
                                     label="1"
                                     name="1"
                                     value="1"
+                                    checked={ '1' === questionOne }
+                                    onChange={ e => setQuestionOne(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="2" 
                                     name="1"
                                     value="2"
+                                    checked={ '2' === questionOne }
+                                    onChange={ e => setQuestionOne(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="3"
                                     name="1"
                                     value="3"
+                                    checked={ '3' === questionOne }
+                                    onChange={ e => setQuestionOne(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="4"
                                     name="1"
                                     value="4"
+                                    checked={ '4' === questionOne }
+                                    onChange={ e => setQuestionOne(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="5"
                                     name="1"
                                     value="5"
+                                    checked={ '5' === questionOne }
+                                    onChange={ e => setQuestionOne(e.target.value) }
                                 />
                             </div>
                         </Form.Group>
@@ -85,32 +113,42 @@ export default () =>{
                                 <Form.Check inline
                                     type="radio"
                                     label="1"
-                                    name="1"
+                                    name="2"
                                     value="1"
+                                    checked={ '1' === questionTwo }
+                                    onChange={ e => setQuestionTwo(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="2" 
-                                    name="1"
+                                    name="2"
                                     value="2"
+                                    checked={ '2' === questionTwo }
+                                    onChange={ e => setQuestionTwo(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="3"
-                                    name="1"
+                                    name="2"
                                     value="3"
+                                    checked={ '3' === questionTwo }
+                                    onChange={ e => setQuestionTwo(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="4"
-                                    name="1"
+                                    name="2"
                                     value="4"
+                                    checked={ '4' === questionTwo }
+                                    onChange={ e => setQuestionTwo(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="5"
-                                    name="1"
+                                    name="2"
                                     value="5"
+                                    checked={ '5' === questionTwo }
+                                    onChange={ e => setQuestionTwo(e.target.value) }
                                 />
                             </div>
                         </Form.Group>
@@ -125,32 +163,42 @@ export default () =>{
                                 <Form.Check inline
                                     type="radio"
                                     label="Nada"
-                                    name="1"
+                                    name="3"
                                     value="1"
+                                    checked={ '1' === questionThree }
+                                    onChange={ e => setQuestionThree(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="Poco" 
-                                    name="1"
+                                    name="3"
                                     value="2"
+                                    checked={ '2' === questionThree }
+                                    onChange={ e => setQuestionThree(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="Algo"
-                                    name="1"
+                                    name="3"
                                     value="3"
+                                    checked={ '3' === questionThree }
+                                    onChange={ e => setQuestionThree(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="Bastante"
-                                    name="1"
+                                    name="3"
                                     value="4"
+                                    checked={ '4' === questionThree }
+                                    onChange={ e => setQuestionThree(e.target.value) }
                                 />
                                 <Form.Check inline
                                     type="radio"
                                     label="Mucho"
-                                    name="1"
+                                    name="3"
                                     value="5"
+                                    checked={ '5' === questionThree }
+                                    onChange={ e => setQuestionThree(e.target.value) }
                                 />
                             </div>
                         </Form.Group>
