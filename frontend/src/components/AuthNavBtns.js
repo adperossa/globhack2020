@@ -7,7 +7,7 @@ export default (props) => {
     
     <>
     
-      <Button variant="outline-light"
+      <Button variant="info"
         onClick={() => props.setAuthState(false)}
       >
         Cerrar sesión
