@@ -15,11 +15,14 @@ app.use(morgan('dev'));
 app.use(cors());
 
 //Controllers
-const userController = require(".controllers/UserController");
+const UserController = require("./controllers/UserController");
 
 //Routes
-app.post("/login", userController.login);
-app.post("/register", userController.register);
+app.post("/login", UserController.login);
+app.post("/register", UserController.register);
+
+//Api Routes
+app.get('/api/users', UserController.getUserList);
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en el puerto ${port}`)
