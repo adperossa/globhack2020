@@ -1,10 +1,11 @@
 const Review = require('../models/Review');
+const Company = require('../models/Company');
 
 async function addReview(req, res) {
-  const { enterprise, summary, satisfactionScale, inclusionScale, salaryScale } = req.body;
+  const { companyName, summary, question_1, question_2, question_3, question_4, question_5 } = req.body;
   //Bad request
   console.log(req.body);
-  if (!enterprise) {
+  if (!companyName) {
     return res.status(401).send("Company name missing");
   }
   //200 OK
