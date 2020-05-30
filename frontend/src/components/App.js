@@ -1,10 +1,25 @@
-import React from 'react';
-import '../css/App.css';
+// Library dependencies
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
 
-function App() {
+// Components and styles
+import '../css/App.css';
+import Title from './Title';
+import Navigation from './Navigation';
+
+
+
+export default function App() {
   return (
-    <h1>Recruiter Review</h1>
+
+    <>
+
+        <Navigation />
+
+        <Container>
+          <Title />
+        </Container>
+
+    </>
   );
 }
-
-export default App;
