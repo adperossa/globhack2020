@@ -25,9 +25,9 @@ export default () =>{
         body: JSON.stringify(object)
         })
          .then( res => res.json() )
-         .then( 
-             res =>  
-            {alert(res.message)} )
+         .then( res =>  {
+             return alert(res.message);
+         } )
         
     }
 
