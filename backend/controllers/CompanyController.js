@@ -11,9 +11,8 @@ async function getCompanyList(req, res) {
     return res.status(409).json({ success: false, status: 400, message: "Company does't exist" })
   }
   
+  companyList = companyList.filter(company => company.name.toUpperCase().includes(companyName.toUpperCase()))
   return res.status(200).json({ success: true, status: 200, message: "Request succesfully", companies: companyList });
 }
-
-
 
 module.exports = { getCompanyList };
