@@ -5,13 +5,21 @@ import { Container } from 'react-bootstrap';
 // Components and styles
 import '../css/App.css';
 import Title from './Title';
+import Navigation from './Navigation';
 
 
 
 export default function App() {
   return (
-    <Container>
-      <Title />
-    </Container>
+
+    <>
+
+        <Navigation />
+
+        <Container>
+          <Title />
+        </Container>
+
+    </>
   );
 }
