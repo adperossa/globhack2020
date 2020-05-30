@@ -29,5 +29,5 @@ app.post("/register", UserController.register);
 app.get('/api/users', UserController.getUserList);
 
 app.listen(port, () => {
-  console.log(`Servidor corriendo en el puerto ${port}`)
+  console.log(`Server running on http://localhost:${port}`)
 });
