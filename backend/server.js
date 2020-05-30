@@ -27,11 +27,13 @@ const CompanyController = require("./controllers/CompanyController");
 //Routes
 app.post("/login", UserController.login);
 app.post("/register", UserController.register);
-app.post("/reviewform", ReviewController.addReview);
+app.post("/review-form", ReviewController.addReview);
 app.get("/companies", CompanyController.getCompanyList);
+
 
 //Api Routes
 app.get('/api/users', UserController.getUserList);
+app.get('/api/reviews', ReviewController.getReviewList); 
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
