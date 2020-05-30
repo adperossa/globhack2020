@@ -21,12 +21,14 @@ app.use(cors());
 //Controllers
 const UserController = require("./controllers/UserController");
 const ReviewController = require("./controllers/ReviewController");
+const CompanyController = require("./controllers/CompanyController");
 
 
 //Routes
 app.post("/login", UserController.login);
 app.post("/register", UserController.register);
-app.post("/review-form", ReviewController.);
+app.post("/reviewform", ReviewController.addReview);
+app.get("/companies", CompanyController.getCompanyList);
 
 //Api Routes
 app.get('/api/users', UserController.getUserList);
