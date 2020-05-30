@@ -1,13 +1,17 @@
-import React from 'react';
-import '../css/App.css';
-import Navigation from './Navigation';
+// Library dependencies
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
 
-function App() {
+// Components and styles
+import '../css/App.css';
+import Title from './Title';
+
+
+
+export default function App() {
   return (
-    <>
-    <Navigation />
-    </>
+    <Container>
+      <Title />
+    </Container>
   );
 }
-
-export default App;
