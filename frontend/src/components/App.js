@@ -1,28 +1,36 @@
 // Library dependencies
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 // Components and styles
 import '../css/App.css';
-import Title from './Title';
 import Navigation from './Navigation';
 import FormReview from './FormReview';
+import Search from './Search';
+import UserHome from './UserHome';
+import Landing from './Landing';
 
 
 
 export default function App() {
   return (
 
-    <>
+    <Router>
 
-        <Navigation />
+      <Navigation />
 
-        <Container>
-          <Title />
-        </Container>
+      <Switch>
+        <Route path="/submit" children={<FormReview />} />
+        <Route path="/search" children={<Search />} />
+        <Route path="/home" children={<UserHome />} />
+        <Route path="/" children={<Landing />} />
+      </Switch>
 
-        <FormReview />
 
-    </>
+    </Router>
   );
 }
