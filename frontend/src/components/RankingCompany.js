@@ -9,45 +9,16 @@ import TableRow from '@material-ui/core/TableRow';
 
 export default function RankingCompany(props) {
 
-  const [showRankingCompany, setshowRankingCompany] = useState('');
-
-  let companies = [
-    {
-      name: "Globant",
-      overage: 2.8
-    },
-    {
-      name: "Accenture",
-      overage: 1.8
-    },
-    {
-      name: "Mercadolibre",
-      overage: 3.8
-    },
-    {
-      name: "Atos",
-      overage: 5.8
-    },
-    {
-      name: "Fizzmod",
-      overage: 1.2
-    },
-  ]
+  const [showRankingCompany, setShowRankingCompany] = useState([]);
 
   useEffect( () => {
-
-        // setshowRankingCompany(companies);
-        fetch('http://localhost:8080/api/companies')
-
-        .then(res => res.json())
-
-        .then(res => {
-            setshowRankingCompany(res.companies);
-          }
-        );
-    
-    } ,[]
-  )
+    // setshowRankingCompany(companies);
+    fetch('http://localhost:8080/api/companies')
+    .then(res => res.json())
+    .then(res => {
+      setShowRankingCompany(res.companies);
+    });
+  } ,[])
 
   const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -71,13 +42,16 @@ export default function RankingCompany(props) {
     return { position, company, overage };
   }
 
-  const rows = [
-    createData(1, "Globant", 6.0),
-    createData(2, "Bellatrix", 9.0),
-    createData(3, "Atos", 16.0),
-    createData(4, "Accenture", 3.7),
-    createData(5, "Mercadolibre", 16.0),
-  ];
+    const rows = showRankingCompany.map((company, index) => {
+      return {
+        position: index + 1,
+        company: company.name,
+        Average: company.globalAverage
+      };
+    });
+
+
+  console.log(typeof showRankingCompany);
 
   const useStyles = makeStyles({
     table: {
@@ -107,7 +81,7 @@ export default function RankingCompany(props) {
                       {row.position}
                     </StyledTableCell>
                     <StyledTableCell align="left">{row.company}</StyledTableCell>
-                    <StyledTableCell align="right">{row.overage}</StyledTableCell>
+                    <StyledTableCell align="right">{row.Average}</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>

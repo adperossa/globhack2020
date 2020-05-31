@@ -19,7 +19,7 @@ async function getCompanyFilteredList(req, res) {
 
 async function getCompanyList(req, res) {
   const companies = await Company.find();
-  res.json(companies);
+  res.json({ success: true, status: 200, message: "Request succesfully", companies: companies });
 }
 
 async function getCompanyRankingList(req, res) {
