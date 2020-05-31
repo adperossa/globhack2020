@@ -6,7 +6,8 @@ import AuthNavBtns from './AuthNavBtns';
 import Login from './Login';
 import Register from './Register';
 import logo from '../img/logo.png';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import DebugNav from './DebugNav';
 
 export default (props) => {
 
@@ -44,6 +45,9 @@ export default (props) => {
             <img src={logo} alt="logo" style={{ width: '7rem' }} />
           </Navbar.Brand>        
         </Link>
+
+        {/* DEV UTILITIES, REMOVE IN PROD */}
+        <DebugNav setAuthState={props.setAuthState} />
 
         <Nav className="ml-auto">
 

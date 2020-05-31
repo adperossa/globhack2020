@@ -42,5 +42,18 @@
     background-color: #316E9E !important;
     text-align: center;
     color: white;
-    margin-top: 250px;
+    margin-top: 30px;
+    padding: 1.5rem 2rem;
+}
+
+.home-container {
+    min-height: 70vh;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.7) 100%), url("../img/fondolanding.svg");
+    background-size: cover;
+    background-position: 0% 55%;
+    background-repeat: no-repeat;
+}
+
+.home-title {
+    text-shadow: 1px 2px 2px rgba(150, 150, 150, 1);
 }

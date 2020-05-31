@@ -8,7 +8,7 @@ import Title from './Title'
 export default () => {
   return (
     <>
-      <Container>
+      <Container fluid className="home-container">
         <Title />
       </Container>
 
