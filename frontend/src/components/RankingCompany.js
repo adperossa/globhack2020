@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import StarRating from './StarRating';
 
 export default function RankingCompany(props) {
 
@@ -83,7 +84,7 @@ export default function RankingCompany(props) {
                     </StyledTableCell>
                     <StyledTableCell align="left">{row.company}</StyledTableCell>
                     <StyledTableCell align="center">3</StyledTableCell>
-                    <StyledTableCell align="right">{row.Average}</StyledTableCell>
+                    <StyledTableCell className='mr-5' align="right">{row.Average}<StarRating  rating={Math.round(row.Average)} /></StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>

@@ -107,3 +107,7 @@
 .rating .selected .star {
     fill: #2d4f9a;
 }
+
+.MuiTableCell-body > .rating{
+    margin-left: 20px;
+}
