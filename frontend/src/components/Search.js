@@ -8,19 +8,23 @@ export default (props) => {
   let hasResults;
 
   const location = useLocation();
-  const { results , query } = location.state;
+  const results = location.state.results;
+  const query = location.state.query;
+
+  console.log(results);
+  console.log(query);
 
   if (results.success) {
-    hasResults = false;
-  } else {
     hasResults = true;
+  } else {
+    hasResults = false;
   }
 
   return (
     <Container>
     { hasResults ? (
       
-      <Reviews companyName={query} reviews={results} />
+      <Reviews companyName={query} reviews={results.reviews} />
 
     ) : (
 

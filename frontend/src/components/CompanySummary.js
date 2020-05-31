@@ -18,7 +18,7 @@ export default (props) =>{
         <>
             <Jumbotron className="m-4 colour-text">
 
-                <h1 className="m-3">{companySummary.name}</h1>
+                <h1 className="m-3">{props.companyName}</h1>
 
                 <Dropdown.Divider className="border-blue m-3" />
 
