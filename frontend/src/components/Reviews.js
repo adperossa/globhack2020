@@ -1,4 +1,5 @@
 import React from 'react';
+import CompanySummary from './CompanySummary';
 import {Card, Dropdown, Button} from 'react-bootstrap';
 
 export default (props) =>{
@@ -7,6 +8,8 @@ export default (props) =>{
     return(
         <>
             <div className="d-flex justify-content-center flex-wrap">
+
+                <CompanySummary />
 
                        
                         {props.reviews.map( review => {
