@@ -78,7 +78,7 @@ export default function RankingCompany(props) {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <StyledTableRow key={row.position}>
+                  <StyledTableRow key={row.position} className={`important-${row.position}`}>
                     <StyledTableCell component="th" scope="row">
                       {row.position}
                     </StyledTableCell>

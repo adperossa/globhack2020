@@ -111,3 +111,17 @@
 .MuiTableCell-body > .rating{
     margin-left: 20px;
 }
+
+.important-1 * {
+    font-size: 1.3em !important;
+    font-weight: bolder !important;
+}
+.important-2 * {
+    font-size: 1.1em !important;
+}
+.important-3 * {
+    font-size: 0.9em !important;
+}
+.important-4 * {
+    font-size: 0.8em !important;
+}
