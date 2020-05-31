@@ -40,12 +40,16 @@ export default function App() {
         </Route>
 
         <Route path="/search">
-          {logged ? (
+
+          <Search />
+
+          {/* {logged ? (
             <Search />
           ) : (
               <Redirect to="/" />
           )
-          }
+          } */}
+
         </Route>
 
         <Route path="/home">
