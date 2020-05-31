@@ -38,7 +38,14 @@ async function getReviewList(req, res) {
   return res.status(200).json(Reviews);
 }
 
+async function getCompanyReviewList(req, res) {
+  const companies = await Company.find();
+  console.log(companies)
+  return res.status(200).json(companies)
+}
+
 module.exports = {
   addReview,
-  getReviewList
+  getReviewList,
+  getCompanyReviewList
 }
