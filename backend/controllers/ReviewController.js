@@ -28,7 +28,7 @@ async function addReview(req, res) {
 
 function calculateAverage(arr) {
   let acum = arr.reduce((a, b) => Number(a) + Number(b))
-  const average = acum / arr.length;
+  const average = (acum / arr.length).toFixed(2);
   return average;
 }
 
