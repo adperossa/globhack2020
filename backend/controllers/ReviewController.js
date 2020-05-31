@@ -11,7 +11,7 @@ async function addReview(req, res) {
 
   if (company.length === 0) {
     //Add company to DB
-    const newCompany = new Company({ name: companyName , average: 0 })
+    const newCompany = new Company({ name: companyName, average: 0 })
     await newCompany.save();
 
   }
@@ -49,7 +49,13 @@ async function getReviewListFilteredByCompany(req, res) {
   if (filteredReviews.length === 0) {
     return res.status(200).json({ success: false, status: 200, message: "Couldn't find any match" });
   }
-  return res.status(200).json(filteredReviews);
+  const averageArray = [];
+  filteredReviews.forEach(review => {
+    averageArray.push(review.average)
+  });
+  const averageGlobal = calculateAverage(averageArray);
+  Company.update({ "name": companyName }, { $set: { "average": averageGlobal } });
+  return res.status(200).json(filteredReviews, averageGlobal);
 }
 
 module.exports = {
