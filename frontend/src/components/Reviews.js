@@ -1,32 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Card, Dropdown, Button} from 'react-bootstrap';
 
-export default () =>{
+export default (props) =>{
 
-    const [ reviews, setReviews ] = useState([])
-
-    console.log(reviews)
-
-    useEffect( () => {
-            fetch(`http://localhost:8080/api/reviews`, {
-            
-            })
-            .then( res => res.json())
-            .then( res => setReviews(res)
-                    
-            )
-           }   , []
-     );
-
-     
     
-
     return(
         <>
             <div className="d-flex justify-content-center flex-wrap">
 
                        
-                        {reviews.map( review => {
+                        {props.reviews.map( review => {
                             
                             return ( 
 
