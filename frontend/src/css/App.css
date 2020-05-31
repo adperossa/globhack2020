@@ -36,6 +36,10 @@
     border-bottom: 1px solid #215075 !important;
 }
 
+.border {
+    border: 1.5px solid #215075 !important;
+}
+
 .sombra{
     -webkit-box-shadow: 0 4px 8px 0 #777, 0 10px 6px -6px #777;
     -moz-box-shadow: 0 4px 8px 0 #777, 0 10px 6px -6px #777;

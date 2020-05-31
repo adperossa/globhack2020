@@ -46,9 +46,6 @@ export default (props) => {
           </Navbar.Brand>        
         </Link>
 
-        {/* DEV UTILITIES, REMOVE IN PROD */}
-        <DebugNav setAuthState={props.setAuthState} />
-
         <Nav className="ml-auto">
 
           {

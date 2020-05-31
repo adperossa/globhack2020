@@ -29,19 +29,19 @@ export default (props) => {
                       <ul className="ratingsList mt-5 mb-5">
 
                         <div className="ratingItem">
-                          <li>Calificación del ambiente: </li><StarRating rating={review.questionOne} />
+                          <li>Profesionalismo y respeto: </li><StarRating rating={review.questionOne} />
                         </div>
 
                         <div className="ratingItem">
-                          <li>Calificación de feedback: </li><StarRating rating={review.questionTwo} />
+                          <li>Feedback: </li><StarRating rating={review.questionTwo} />
                         </div>
 
                         <div className="ratingItem">
-                          <li>Calificación de cv: </li><StarRating rating={review.questionThree} />
+                          <li>Políticas de inclusión: </li><StarRating rating={review.questionThree} />
                         </div>
 
                         <div className="ratingItem">
-                          <li>Calificación global: </li><StarRating rating={review.average} />
+                          <li>Calificación general: </li><StarRating rating={review.average} />
                         </div>
 
                       </ul>

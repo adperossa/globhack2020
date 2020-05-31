@@ -70,8 +70,8 @@ export default function RankingCompany(props) {
               <TableHead>
                 <TableRow>
                   <StyledTableCell>#</StyledTableCell>
-                  <StyledTableCell align="left">Company</StyledTableCell>
-                  <StyledTableCell align="right">Average</StyledTableCell>
+                  <StyledTableCell align="left">Empresa</StyledTableCell>
+                  <StyledTableCell align="right">Promedio general</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
