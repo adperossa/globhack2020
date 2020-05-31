@@ -37,7 +37,7 @@ export default  () => {
 
 				.then(res => res.json())
 
-				.then(res => setCompaniesList(res))  
+				.then(res => setCompaniesList(res.companies))  
 
 		}, []
 	);
