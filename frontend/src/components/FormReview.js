@@ -430,7 +430,7 @@ export default  () => {
 	
 						<Card.Footer className="text-right">
 
-							<Button className="button-green mr-2" 
+							<Button variant="secondary" className="mr-2"
 									onClick={e => prevStep(step)}
 							>
 								Atras
