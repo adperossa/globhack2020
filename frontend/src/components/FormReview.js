@@ -10,6 +10,7 @@ export default () => {
   const [questionOne, setQuestionOne] = useState(6)
   const [questionTwo, setQuestionTwo] = useState(6)
   const [questionThree, setQuestionThree] = useState(6)
+  const [step, setStep] = useState(0)
 
   const history = useHistory();
 
@@ -20,6 +21,19 @@ export default () => {
     questionTwo: questionTwo,
     questionThree: questionThree
   }
+
+  
+
+  //go to next Step
+  const nextStep = (step) => {
+    setStep(step + 1)
+  }
+  //go to prev Step
+  const prevStep = (step) => {
+    setStep(step - 1)
+  }
+
+
 
   const handleSubmit = () => {
 
@@ -51,6 +65,11 @@ export default () => {
           <Card.Body className="m-5">
 
             <h1 className="mb-5">Contanos que te pareció la entrevista</h1>
+
+            {console.log(step)}
+            {<Button onClick={e => nextStep(step)}>Siguiente</Button> }
+            {<Button onClick={e => prevStep(step)}>Atras</Button> }
+            
 
 
             <Form>
