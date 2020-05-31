@@ -51,7 +51,7 @@ export default function RankingCompany(props) {
 
   const StyledTableCell = withStyles((theme) => ({
     head: {
-      backgroundColor: '#247369',
+      backgroundColor: '#316e9e',
       color: theme.palette.common.white,
     },
     body: {

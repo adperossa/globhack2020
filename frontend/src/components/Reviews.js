@@ -1,6 +1,6 @@
 import React from 'react';
 import CompanySummary from './CompanySummary';
-import { Container, Card, CardDeck, Dropdown, Button } from 'react-bootstrap';
+import { Card, Dropdown, Button } from 'react-bootstrap';
 import StarRating from './StarRating';
 
 export default (props) => {
@@ -9,44 +9,52 @@ export default (props) => {
   return (
       <div className="d-flex justify-content-center flex-wrap">
 
-        {/* <CompanySummary /> */}
+        <CompanySummary />
 
           {props.reviews.map(review => {
 
             return (
 
-              <Card>
+              <Card className="sombra colour-text m-3 p-4" style={{ width: '30rem' }}>
                 <Card.Body>
+
                   <Card.Text>
-                    This is a wider card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.
+                    <p className="mb-4 lead">
+                      {review.summary}
+                    </p>
+                    
 
-                    {review.summary}
+                    <Dropdown.Divider className="colour-divider m-3" />
 
-                    <ul className="ratingsList">
+                    <ul className="ratingsList mt-5 mb-5">
+
                       <div className="ratingItem">
                         <li>Calificación del ambiente: </li><StarRating rating={review.questionOne} />
-
                       </div>
+
                       <div className="ratingItem">
                         <li>Calificación de feedback: </li><StarRating rating={review.questionTwo} />
-
                       </div>
+
                       <div className="ratingItem">
                         <li>Calificación de cv: </li><StarRating rating={review.questionThree} />
-
                       </div>
+
                       <div className="ratingItem">
                         <li>Calificación global: </li><StarRating rating={review.average} />
-
                       </div>
 
                     </ul>
+
                   </Card.Text>
-                </Card.Body>
-                <Card.Footer className="text-right">
-                  <Button className="button-orange">Dejá tu review</Button>
-                </Card.Footer>
+
+                  <Dropdown.Divider className="colour-divider m-3" />
+
+                  <div className="text-right mt-4">
+                    <Button className="button-orange">Dejá tu review</Button>
+                  </div>
+
+                </Card.Body>                
               </Card>
 
 

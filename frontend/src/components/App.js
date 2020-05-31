@@ -55,7 +55,10 @@ export default function App() {
 
         <Route path="/home">
           {logged ? (
-            <UserHome />
+            <>
+              <UserHome />
+              <RankingCompany />
+            </>
           ) : (
               <Redirect to="/" />
           )
