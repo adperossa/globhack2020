@@ -10,14 +10,34 @@ async function addReview(req, res) {
   }
   const company = await Company.find({ name: companyName });
 
+  const average = calculateAverage(questions)
+
   if (company.length === 0) {
     //Add company to DB
-    const newCompany = new Company({ name: companyName })
+    const newCompany = new Company({ 
+      name: companyName, 
+      globalAverage: average, 
+      averageQuestionOne: questionOne, 
+      averageQuestionTwo: questionTwo,
+      averageQuestionThree: questionThree 
+    });
     await newCompany.save();
-
   }
-  //Add average
-  const average = calculateAverage(questions)
+  
+  if(company.length !== 0){
+    let reviews = await Review.find({companyName: companyName})
+    let companyUpdated = updateCompany(reviews);
+    await Company.updateOne({ "name": companyName }, 
+    { 
+      $set: 
+        { 
+          "globalAverage": companyUpdated.globalAverage,
+          "averageQuestionOne": companyUpdated.averageQuestionOne,
+          "averageQuestionTwo": companyUpdated.averageQuestionTwo,
+          "averageQuestionThree": companyUpdated.averageQuestionThree
+        } 
+    });
+  }
 
   //200 OK
   const NewReview = new Review({ companyName, summary, questionOne, questionTwo, questionThree, average })
@@ -48,6 +68,28 @@ async function getReviewListFilteredByCompany(req, res) {
     return res.status(200).json({ success: true, status: 200, message: "Couldn't find any match" });
   }
   return res.status(200).json(filteredReviews);
+}
+
+function updateCompany(reviews){
+  let question1 = [];
+  let question2 = [];
+  let question3 = [];
+  let totalsAverage = [];
+
+  reviews.forEach(review => {
+    question1.push(review.questionOne);
+    question2.push(review.questionTwo);
+    question3.push(review.questionThree);
+    totalsAverage.push(review.average);
+  });
+
+  return {
+    name:reviews.newCompany,
+    averageQuestionOne: calculateAverage(question1),
+    averageQuestionTwo: calculateAverage(question2),
+    averageQuestionThree: calculateAverage(question3),
+    globalAverage: calculateAverage(totalsAverage)
+  }
 }
 
 module.exports = {
