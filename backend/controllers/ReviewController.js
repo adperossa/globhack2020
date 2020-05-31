@@ -28,7 +28,7 @@ async function addReview(req, res) {
 
 function calculateAverage(arr) {
   let acum = arr.reduce((a, b) => Number(a) + Number(b))
-  const average = (acum / arr.length).toFixed(2);
+  const average = Number((acum / arr.length).toFixed(2));
   return average;
 }
 
@@ -47,13 +47,9 @@ async function getReviewListFilteredByCompany(req, res) {
   if (filteredReviews.length === 0) {
     return res.status(200).json({ success: true, status: 200, message: "Couldn't find any match" });
   }
-  const averageArray = [];
-  filteredReviews.forEach(review => {
-    averageArray.push(review.average)
-  });
-  const averageGlobal = calculateAverage(averageArray);
-  Company.update({ "name": companyName }, { $set: { "average": averageGlobal } });
-  return res.status(200).json(filteredReviews, averageGlobal);
+  const company = await Company.find({ "name": companyName });
+
+  return res.status(200).json({ success: true, status: 200, message: "Data in JSON", reviews: filteredReviews, company: company });
 }
 
 module.exports = {
