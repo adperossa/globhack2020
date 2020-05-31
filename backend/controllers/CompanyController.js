@@ -1,5 +1,7 @@
 const Company = require('../models/Company');
 
+const {getReviewListFilteredByCompany} = require('./ReviewController');
+
 async function getCompanyFilteredList(req, res) {
   const companyName  = req.query.companyName;
   if (!companyName) {
@@ -19,5 +21,10 @@ async function getCompanyList(req, res) {
   const companies = await Company.find();
   res.json(companies);
 }
+
+async function getCompanyAverage(req,res){
+
+}
+
 
 module.exports = { getCompanyFilteredList, getCompanyList };
