@@ -68,7 +68,7 @@ async function getReviewListFilteredByCompany(req, res) {
   }
   const company = await Company.find({ "name": companyName });
 
-  return res.status(200).json({ success: true, status: 200, message: "Data in JSON", reviews: filteredReviews, company: company });
+  return res.status(200).json({ success: true, status: 200, message: "Data in JSON", reviews: filteredReviews, company: company[0] });
 }
 
 function updateCompany(reviews){
