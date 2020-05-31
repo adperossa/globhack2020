@@ -26,7 +26,7 @@ export default (props) =>{
 
                     <Col>
                         <Card className="h5 m-4 p-4 border" style={{ width: '10rem', height: '5rem'}}>
-                            Total : {companySummary.globalAverage}
+                            {/* Total : {props.company.globalAverage} */}
                         </Card>
                     </Col>
                 </Row>

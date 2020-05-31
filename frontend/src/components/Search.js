@@ -24,7 +24,7 @@ export default (props) => {
     <Container>
     { hasResults ? (
       
-      <Reviews companyName={query} reviews={results.reviews} />
+      <Reviews companyName={query} results={results} />
 
     ) : (
 

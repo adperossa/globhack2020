@@ -5,14 +5,18 @@ import StarRating from './StarRating';
 
 export default (props) => {
 
+  console.log(props.companyName);
+  console.log(props.results);
+  
+
 
   return (
       <div className="d-flex justify-content-center flex-wrap">
 
-        <CompanySummary companyName={props.companyName} company={props.reviews.company} />
+        <CompanySummary companyName={props.companyName} company={props.results.company} />
 
-          {props.reviews.map(review => {
-
+          {props.results.reviews.map(review => {
+            
               return (
 
                 <Card className="sombra colour-text m-3 p-4" style={{ width: '30rem' }}>
