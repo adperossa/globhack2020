@@ -38,8 +38,8 @@ export default function RankingCompany(props) {
     },
   }))(TableRow);
 
-  function createData(position, company, overage) {
-    return { position, company, overage };
+  function createData(position, company, average) {
+    return { position, company, average };
   }
 
     const rows = showRankingCompany.map((company, index) => {
@@ -71,7 +71,7 @@ export default function RankingCompany(props) {
                 <TableRow>
                   <StyledTableCell>#</StyledTableCell>
                   <StyledTableCell align="left">Company</StyledTableCell>
-                  <StyledTableCell align="right">Overage</StyledTableCell>
+                  <StyledTableCell align="right">Average</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

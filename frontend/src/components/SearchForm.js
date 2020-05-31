@@ -15,7 +15,7 @@ export default () => {
     history.push({
       pathname: "/search",
       search: `?query=${query}`,
-      state: { results }
+      state: { results, query }
     })
     // console.log(results);
   }

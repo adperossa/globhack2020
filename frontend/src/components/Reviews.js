@@ -9,7 +9,7 @@ export default (props) => {
   return (
       <div className="d-flex justify-content-center flex-wrap">
 
-        <CompanySummary />
+        <CompanySummary companyName={props.companyName} />
 
           {props.reviews.map(review => {
 

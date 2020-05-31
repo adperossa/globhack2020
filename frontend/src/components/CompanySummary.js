@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Button, Card, Dropdown } from 'react-bootstrap';
 
-export default () =>{
+export default (props) =>{
 
     const [ companySummary, setCompanySummary ] = useState([])
 
     useEffect( () =>{
 
-            fetch(`http://localhost:8080/companyReview`)
+            fetch(`http://localhost:8080/companyReview?companyName=${props.companyName}`)
 
             .then(res => res.json())
 
