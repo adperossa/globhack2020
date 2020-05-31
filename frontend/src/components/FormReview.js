@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Form, Button, Card, Dropdown} from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 export default () =>{
 
@@ -26,7 +27,10 @@ export default () =>{
         })
          .then( res => res.json() )
          .then( res =>  {
-             return alert(res.message);
+             Swal.fire({
+                 text: res.message,
+                 icon: 'success'
+             })
          } )
         
     }
