@@ -1,7 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, Dropdown, Button} from 'react-bootstrap';
 
 export default () =>{
+
+    const [ reviews, setReviews ] = useState([])
+
+    console.log(reviews)
+
+    useEffect( () => {
+            fetch(`http://localhost:8080/api/companies`, {
+            
+            })
+            .then( res => res.json())
+            .then( res => setReviews(res)
+                    
+            )
+           }   , []
+     );
+
+
+    
 
     return(
         <>
