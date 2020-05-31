@@ -36,6 +36,7 @@ app.get("/companyReview", ReviewController.getReviewListFilteredByCompany);
 app.get('/api/users', UserController.getUserList);
 app.get('/api/reviews', ReviewController.getReviewList); 
 app.get("/api/companies", CompanyController.getCompanyList);
+app.get("/api/companyRanking", CompanyController.getCompanyRankingList);
 
 
 
