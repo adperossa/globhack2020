@@ -22,4 +22,10 @@ async function getCompanyList(req, res) {
   res.json(companies);
 }
 
-module.exports = { getCompanyFilteredList, getCompanyList };
+async function getCompanyRankingList(req, res) {
+  const companies = await Company.find().sort({globalAverage: -1}).limit(5);
+  
+  return res.status(200).json({ succes: true, status: 200, message: "Request succesfully", companies})
+}
+
+module.exports = { getCompanyFilteredList, getCompanyList, getCompanyRankingList };
