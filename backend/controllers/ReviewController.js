@@ -16,19 +16,19 @@ async function addReview(req, res) {
 
   }
   //Add average
-  const average = calculateAverage(questionOne, questionTwo, questionThree )
+  const average = calculateAverage(questionOne, questionTwo, questionThree)
 
   //200 OK
   const NewReview = new Review({ companyName, summary, questionOne, questionTwo, questionThree, average })
   await NewReview.save();
 
-  return res.status(200).json({success: true, status: 200, message: "Review saved"});
+  return res.status(200).json({ success: true, status: 200, message: "Review saved" });
 }
 
 function calculateAverage(num1, num2, num3) {
   let arr = [num1, num2, num3];
-  
-  let acum = arr.reduce((a,b) => Number(a)+ Number(b))
+
+  let acum = arr.reduce((a, b) => Number(a) + Number(b))
   const average = acum / arr.length;
   return average;
 }
@@ -38,7 +38,21 @@ async function getReviewList(req, res) {
   return res.status(200).json(Reviews);
 }
 
+async function getCompanyReviewList(req, res) {
+  const { companyName } = req.query;
+  const Reviews = await Review.find();
+  if (Reviews.length === 0) {
+    return res.status(409).json({ success: false, status: 400, message: "There aren't any reviews" })
+  }
+  const filteredReviews = Reviews.filter(review => review.companyName.toUpperCase() === companyName.toUpperCase());
+  if (filteredReviews.length === 0) {
+    return res.status(200).json({ success: true, status: 200, message: "Couldn't find any match" });
+  }
+  return res.status(200).json(filteredReviews);
+}
+
 module.exports = {
   addReview,
-  getReviewList
+  getReviewList,
+  getCompanyReviewList
 }
