@@ -53,7 +53,7 @@ export default  () => {
 		.then(res => {
 			if(res.success === true){
 				Swal.fire({
-					text: res.message,
+					text: 'Se envio su reseña correctamente!',
 					icon: 'success',
 					timer: 2000
 				})

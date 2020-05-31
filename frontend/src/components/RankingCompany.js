@@ -13,7 +13,7 @@ export default function RankingCompany(props) {
 
   useEffect( () => {
     // setshowRankingCompany(companies);
-    fetch('http://localhost:8080/api/companies')
+    fetch('http://localhost:8080/api/companyRanking')
     .then(res => res.json())
     .then(res => {
       setShowRankingCompany(res.companies);
