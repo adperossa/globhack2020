@@ -6,6 +6,7 @@ import AuthNavBtns from './AuthNavBtns';
 import Login from './Login';
 import Register from './Register';
 import logo from '../img/logo.png';
+import { useHistory, Link } from 'react-router-dom';
 
 export default (props) => {
 
@@ -38,10 +39,11 @@ export default (props) => {
   return (
     <>
       <Navbar variant="dark" className="colour-nav">
-
-        <Navbar.Brand>
-          <img src={logo} alt="logo" style={{ width: '7rem' }} />
-        </Navbar.Brand>
+        <Link to="/home">
+          <Navbar.Brand>
+            <img src={logo} alt="logo" style={{ width: '7rem' }} />
+          </Navbar.Brand>        
+        </Link>
 
         <Nav className="ml-auto">
 
