@@ -1,9 +1,13 @@
-import React, { useState, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Card, Dropdown } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom';
-import Avatar from '../img/womanAfrican.jpg'
+import Avatar from '../img/womanAfrican.jpg';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete, {createFilterOptions} from '@material-ui/lab/Autocomplete';
+/* eslint-disable no-use-before-define */
 
+const filter = createFilterOptions();
 
 
 export default  () => {
@@ -16,6 +20,14 @@ export default  () => {
   const [questionTwo, setQuestionTwo] = useState(6)
   const [questionThree, setQuestionThree] = useState(6)
   const [step, setStep] = useState(0)
+  const [value, setValue] = useState(null);
+  const [companiesList, setCompaniesList ] = useState([]);
+  
+  useEffect(() => {
+	  fetch('http://localhost:8080/api/companies')
+		.then(res => res.json())
+		.then(res => setCompaniesList(res))  
+  }, []);
 
   const history = useHistory();
 
@@ -27,7 +39,23 @@ export default  () => {
     questionThree: questionThree
   }
 
+
+
+//   const companiesList = [
+// 	{
+//         _id: "5ed2c4d87ac12eaf641f3fef",
+//         name: "Buena empresa amiga",
+//         __v: 0
+//     },
+//     {
+//         _id: "5ed2cdd4b8de742d2d53467c",
+//         name: "Globant",
+//         __v: 0
+//     },
+    
   
+// 	];
+
 
   //go to next Step
   const nextStep = (step) => {
@@ -88,12 +116,95 @@ export default  () => {
 									<Form.Group className="mb-5">
 		
 										<Form.Label>Nombre de la empresa a la cual queres hacerle la review</Form.Label>
-										<Form.Control type="text"
-											className="border-blue"
-											placeholder="Nombre de la empresa"
-											value={companyName}
-											onChange={e => setCompanyName(e.target.value)}
-										/>
+										{/* <Autocomplete
+      										id="combo-box-demo"
+      										options={[
+												  {nombre:'Alan'},
+												  {nombre:'Axel'},
+												  {nombre:'Anahi'}
+												]}
+      										getOptionLabel={(option) => option.nombre}
+      										style={{ width: 660 }}
+      										renderInput={(params) => <TextField {...params} label="Seleccionar Empresa" variant="outlined" />}
+    									/> */}
+
+
+
+
+
+						<Autocomplete
+									value={value}
+									onChange={(event, newValue) => {
+										if (typeof newValue === 'string') {
+											setValue({
+												name: newValue,
+									});
+										} else if (newValue && newValue.inputValue) {
+											// Create a new value from the user input
+											setValue({
+												name: newValue.inputValue,
+											});
+										} else {
+											setValue(newValue);
+								}
+
+								const stringName = event.target.innerText.replace('Agregar', '');
+								setCompanyName(stringName)
+
+								
+									}}
+									filterOptions={(options, params) => {
+										const filtered = filter(options, params);
+
+										// Suggest the creation of a new value
+										if (params.inputValue !== '') {
+											filtered.push({
+												inputValue: params.inputValue,
+												name: `Agregar ${params.inputValue}`,
+									});
+										}
+
+										return filtered;
+									}}
+									selectOnFocus
+									clearOnBlur
+									handleHomeEndKeys
+									id="free-solo-with-text-demo"
+									options={companiesList}
+									getOptionLabel={(option) => {
+										// Value selected with enter, right from the input
+										if (typeof option === 'string') {
+											return option;
+										}
+										// Add "xxx" option created dynamically
+										if (option.inputValue) {
+											return option.inputValue;
+										}
+										// Regular option
+										return option.name;
+									}}
+									renderOption={(option) => option.name}
+									style={{ width: 670 }}
+									freeSolo
+									renderInput={(params) => (
+										<TextField {...params} label="Selecciona la Empresa" variant="outlined" />
+									)}
+								/>
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 									</Form.Group>
 		
