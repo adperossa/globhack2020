@@ -23,6 +23,9 @@ async function addReview(req, res) {
     });
     await newCompany.save();
   }
+  //200 OK
+  const NewReview = new Review({ companyName, summary, questionOne, questionTwo, questionThree, average })
+  await NewReview.save();
   
   if(company.length !== 0){
     let reviews = await Review.find({companyName: companyName})
@@ -38,10 +41,6 @@ async function addReview(req, res) {
         } 
     });
   }
-
-  //200 OK
-  const NewReview = new Review({ companyName, summary, questionOne, questionTwo, questionThree, average })
-  await NewReview.save();
 
   return res.status(200).json({ success: true, status: 200, message: "Review saved" });
 }
