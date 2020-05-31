@@ -11,7 +11,7 @@ async function addReview(req, res) {
 
   if (company.length === 0) {
     //Add company to DB
-    const newCompany = new Company({ name: companyName })
+    const newCompany = new Company({ name: companyName , average: 0 })
     await newCompany.save();
 
   }
@@ -25,6 +25,7 @@ async function addReview(req, res) {
   return res.status(200).json({ success: true, status: 200, message: "Review saved" });
 }
 
+//Array parameters
 function calculateAverage(num1, num2, num3) {
   let arr = [num1, num2, num3];
 
@@ -46,7 +47,7 @@ async function getReviewListFilteredByCompany(req, res) {
   }
   const filteredReviews = Reviews.filter(review => review.companyName.toUpperCase() === companyName.toUpperCase());
   if (filteredReviews.length === 0) {
-    return res.status(200).json({ success: true, status: 200, message: "Couldn't find any match" });
+    return res.status(200).json({ success: false, status: 200, message: "Couldn't find any match" });
   }
   return res.status(200).json(filteredReviews);
 }
