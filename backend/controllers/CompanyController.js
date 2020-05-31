@@ -22,9 +22,4 @@ async function getCompanyList(req, res) {
   res.json(companies);
 }
 
-async function getCompanyAverage(req,res){
-
-}
-
-
 module.exports = { getCompanyFilteredList, getCompanyList };
