@@ -71,6 +71,7 @@ export default function RankingCompany(props) {
                 <TableRow>
                   <StyledTableCell>#</StyledTableCell>
                   <StyledTableCell align="left">Empresa</StyledTableCell>
+                  <StyledTableCell align="center">Reseñas</StyledTableCell>
                   <StyledTableCell align="right">Promedio general</StyledTableCell>
                 </TableRow>
               </TableHead>
@@ -81,6 +82,7 @@ export default function RankingCompany(props) {
                       {row.position}
                     </StyledTableCell>
                     <StyledTableCell align="left">{row.company}</StyledTableCell>
+                    <StyledTableCell align="center">3</StyledTableCell>
                     <StyledTableCell align="right">{row.Average}</StyledTableCell>
                   </StyledTableRow>
                 ))}

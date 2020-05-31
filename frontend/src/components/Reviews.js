@@ -5,9 +5,7 @@ import StarRating from './StarRating';
 
 export default (props) => {
 
-  console.log(props.companyName);
-  console.log(props.results);
-  
+
 
 
   return (

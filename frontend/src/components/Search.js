@@ -11,10 +11,11 @@ export default (props) => {
   const results = location.state.results;
   const query = location.state.query;
 
-  console.log(results);
-  console.log(query);
 
-  if (results.success) {
+
+  console.log(results.reviews);
+  
+  if (results.company) {
     hasResults = true;
   } else {
     hasResults = false;
