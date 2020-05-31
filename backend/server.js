@@ -29,7 +29,7 @@ app.post("/login", UserController.login);
 app.post("/register", UserController.register);
 app.post("/review", ReviewController.addReview);
 app.get("/companies", CompanyController.getCompanyFilteredList);
-app.get("/companyReview", ReviewController.getCompanyReviewList);
+app.get("/companyReview", ReviewController.getReviewListFilteredByCompany);
 
 
 //Api Routes

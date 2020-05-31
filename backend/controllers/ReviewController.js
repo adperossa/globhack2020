@@ -38,7 +38,7 @@ async function getReviewList(req, res) {
   return res.status(200).json(Reviews);
 }
 
-async function getCompanyReviewList(req, res) {
+async function getReviewListFilteredByCompany(req, res) {
   const { companyName } = req.query;
   const Reviews = await Review.find();
   if (Reviews.length === 0) {
@@ -54,5 +54,5 @@ async function getCompanyReviewList(req, res) {
 module.exports = {
   addReview,
   getReviewList,
-  getCompanyReviewList
+  getReviewListFilteredByCompany
 }
