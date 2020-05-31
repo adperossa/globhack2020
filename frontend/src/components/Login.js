@@ -10,8 +10,16 @@ export default (props) => {
   const [loginStatus, setLoginStatus] = useState('');
   const [loginMsg, setLoginMsg] = useState('');
 
+  // Importing the routing history to auto redirect to /home after ok login  
   const history = useHistory();
 
+
+  const cleanState = () => {
+    setLoginMsg("");
+    setLoginStatus("");
+    setUsername("");
+    setPassword("");
+  }
 
   const handleLogin = (ev) => {
     ev.preventDefault();
@@ -30,12 +38,14 @@ export default (props) => {
 
           setLoginStatus("success");
           setLoginMsg(`Bienvenido, ${username}!`);
+
           props.setAuthState(true);
           props.setCurrentUser(username);
 
           setTimeout(() => {
             props.onHideLogin();
             history.push("/home");
+            cleanState();
           }, 2000);
 
         } else {
@@ -47,6 +57,10 @@ export default (props) => {
             setLoginMsg("Ocurrió un error.");
             console.error(`Error ${data.status}: ${data.message}`);
           }
+
+          setTimeout(() => {
+            cleanState();
+          }, 4000);
 
         }
       })
@@ -66,6 +80,7 @@ export default (props) => {
                 <Form.Label>Ingrese su email</Form.Label>
 
                 <Form.Control type="email"
+                              required
                               className="border-blue"
                               placeholder="email@gmail.com"
                               onChange={(e) => { setUsername(e.target.value) }}
@@ -78,6 +93,7 @@ export default (props) => {
                 <Form.Label>Ingrese su contraseña</Form.Label>
 
                 <Form.Control type="password"
+                              required
                               className="border-blue"
                               placeholder="Contraseña"
                               onChange={(e) => { setPassword(e.target.value) }}

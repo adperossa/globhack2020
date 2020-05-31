@@ -31,29 +31,33 @@ export default function App() {
       <Switch>
 
         <Route path="/submit">
-          { logged ? (
+          {logged ? (
             <FormReview />
-            ) : (
+          ) : (
               <Redirect to="/" />
-            )
+          )
           }
         </Route>
 
         <Route path="/search">
-          { logged ? (
-              <Search />
-            ) : (
+
+          <Search />
+
+          {/* {logged ? (
+            <Search />
+          ) : (
               <Redirect to="/" />
-            )
-          }
+          )
+          } */}
+
         </Route>
 
         <Route path="/home">
-          { logged ? (
-              <UserHome />
-            ) : (
+          {logged ? (
+            <UserHome />
+          ) : (
               <Redirect to="/" />
-            )
+          )
           }
         </Route>
 

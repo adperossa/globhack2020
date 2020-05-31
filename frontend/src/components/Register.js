@@ -10,6 +10,13 @@ export default (props) => {
   const [registerStatus, setRegisterStatus] = useState('');
   const [registerMsg, setRegisterMsg] = useState('');
 
+  const cleanState = () => {
+    setRegisterMsg("");
+    setRegisterStatus("");
+    setUsername("");
+    setPassword("");
+  }
+
   const handleRegister = (ev) => {
     ev.preventDefault();
 
@@ -27,8 +34,10 @@ export default (props) => {
 
           setRegisterStatus("success");
           setRegisterMsg(`Usuarix ${username} registrado exitosamente.`);
+
           setTimeout(() => {
             props.onHideRegister();
+            cleanState();
           }, 2000);
 
         } else {
@@ -42,6 +51,10 @@ export default (props) => {
             setRegisterMsg("Ocurrió un error.");
             console.error(`Error ${data.status}: ${data.message}`);
           }
+
+          setTimeout(() => {
+            cleanState();
+          }, 4000);
 
         }
       })

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Jumbotron, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import SearchForm from './SearchForm';
 
 
 import Title from './Title'
@@ -8,8 +9,9 @@ import Title from './Title'
 export default () => {
   return (
     <>
-      <Container>
+      <Container fluid className="home-container">
         <Title />
+        <SearchForm className="mt-5" />
       </Container>
 
       <Jumbotron fluid className="home-banner">
