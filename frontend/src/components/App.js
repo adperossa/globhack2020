@@ -14,6 +14,7 @@ import FormReview from './FormReview';
 import Search from './Search';
 import UserHome from './UserHome';
 import Landing from './Landing';
+import RankingCompany from './RankingCompany';
 
 
 
@@ -62,7 +63,12 @@ export default function App() {
         </Route>
 
         <Route exact path="/">
-          <Landing />
+            { 
+              <>
+                <Landing />
+                <RankingCompany />
+              </>
+            }
         </Route>
 
       </Switch>
