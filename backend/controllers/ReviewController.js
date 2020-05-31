@@ -3,33 +3,51 @@ const Company = require('../models/Company');
 
 async function addReview(req, res) {
   const { companyName, summary, questionOne, questionTwo, questionThree } = req.body;
+  const questions = [questionOne, questionTwo, questionThree];
   //Bad request
   if (!companyName) {
     return res.status(401).send("Company name missing");
   }
   const company = await Company.find({ name: companyName });
 
+  const average = calculateAverage(questions)
+
   if (company.length === 0) {
     //Add company to DB
-    const newCompany = new Company({ name: companyName })
+    const newCompany = new Company({ 
+      name: companyName, 
+      globalAverage: average, 
+      averageQuestionOne: questionOne, 
+      averageQuestionTwo: questionTwo,
+      averageQuestionThree: questionThree 
+    });
     await newCompany.save();
-
   }
-  //Add average
-  const average = calculateAverage(questionOne, questionTwo, questionThree)
-
   //200 OK
   const NewReview = new Review({ companyName, summary, questionOne, questionTwo, questionThree, average })
   await NewReview.save();
+  
+  if(company.length !== 0){
+    let reviews = await Review.find({companyName: companyName})
+    let companyUpdated = updateCompany(reviews);
+    await Company.updateOne({ "name": companyName }, 
+    { 
+      $set: 
+        { 
+          "globalAverage": companyUpdated.globalAverage,
+          "averageQuestionOne": companyUpdated.averageQuestionOne,
+          "averageQuestionTwo": companyUpdated.averageQuestionTwo,
+          "averageQuestionThree": companyUpdated.averageQuestionThree
+        } 
+    });
+  }
 
   return res.status(200).json({ success: true, status: 200, message: "Review saved" });
 }
 
-function calculateAverage(num1, num2, num3) {
-  let arr = [num1, num2, num3];
-
+function calculateAverage(arr) {
   let acum = arr.reduce((a, b) => Number(a) + Number(b))
-  const average = acum / arr.length;
+  const average = Number((acum / arr.length).toFixed(2));
   return average;
 }
 
@@ -48,7 +66,31 @@ async function getReviewListFilteredByCompany(req, res) {
   if (filteredReviews.length === 0) {
     return res.status(200).json({ success: true, status: 200, message: "Couldn't find any match" });
   }
-  return res.status(200).json(filteredReviews);
+  const company = await Company.find({ "name": companyName });
+
+  return res.status(200).json({ success: true, status: 200, message: "Data in JSON", reviews: filteredReviews, company: company });
+}
+
+function updateCompany(reviews){
+  let question1 = [];
+  let question2 = [];
+  let question3 = [];
+  let totalsAverage = [];
+
+  reviews.forEach(review => {
+    question1.push(review.questionOne);
+    question2.push(review.questionTwo);
+    question3.push(review.questionThree);
+    totalsAverage.push(review.average);
+  });
+
+  return {
+    name:reviews.newCompany,
+    averageQuestionOne: calculateAverage(question1),
+    averageQuestionTwo: calculateAverage(question2),
+    averageQuestionThree: calculateAverage(question3),
+    globalAverage: calculateAverage(totalsAverage)
+  }
 }
 
 module.exports = {
