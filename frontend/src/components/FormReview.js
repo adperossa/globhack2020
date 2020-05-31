@@ -135,7 +135,7 @@ export default  () => {
 															setValue(newValue);
 														}
 
-														const stringName = event.target.innerText.replace('Agregar', '');
+														const stringName = event.target.innerText.replace('Agregar ', '');
 														setCompanyName(stringName)
 
 												
